@@ -1,0 +1,80 @@
+.Quizapp {
+    width: 400px;
+    display: block;
+    margin: auto;
+    margin-top: 40px;
+    border: 1px solid;
+
+}
+
+h2 {
+    text-align: center;
+    font-family: monospace;
+}
+
+p {
+    border-top: 1px solid;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid;
+    padding-left: 7px;
+    font-family: math;
+}
+
+li {
+    padding: 10px;
+    cursor: pointer;
+    list-style-type: none;
+
+}
+
+ol {
+    padding-left: 0;
+    counter-reset: list-counter;
+
+}
+
+ol li {
+    counter-increment: list-counter;
+
+}
+
+ol li::before {
+    padding-inline: 2px;
+    content: counter(list-counter) ". ";
+
+}
+
+.response {
+    display: flex;
+    justify-content: center;
+    border-top: 1px solid;
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+
+.handelprev {
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.handelnext {
+    cursor: pointer;
+    padding-left: 5px;
+    font-size: 20px;
+}
+
+li:hover {
+    background-color: rgb(243, 243, 243);
+}
+
+.quiz-ended p {
+    margin-bottom: 50px;
+}
+
+@media screen and (max-width: 768px) {
+    .Quizapp {
+        width: 300px;
+
+    }
+}
