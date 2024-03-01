@@ -10,7 +10,7 @@ export default function Quiz() {
     const [score, setScore] = useState(0);
     const [quizdata, setQuizData] = useState(Quizdata);
     const [quizEnded, setQuizEnded] = useState(false);
-
+    const [clickedOption, setClickedOption] = useState(null);
 
     // Retrieve current question
     const currentQuestion = quizdata[question];
@@ -20,7 +20,7 @@ export default function Quiz() {
         if (question + 1 < quizdata.length) {
             setQuestion(question + 1);
         } else {
-            setQuizEnded(true); // Set quizEnded to true when quiz ends
+            setQuizEnded(true);
         }
     }
 
@@ -36,7 +36,7 @@ export default function Quiz() {
         if (selectedAnswer === currentQuestion.correctAnswer) {
             setScore(score + 1);
         }
-        handleNextQuestion();
+        setClickedOption(selectedAnswer); // Set clicked option
     }
 
     return (
@@ -53,7 +53,11 @@ export default function Quiz() {
                     <p>{currentQuestion.question}</p>
                     <ol>
                         {currentQuestion.options.map((option, index) => (
-                            <li key={index} onClick={() => handleCorrectAnswer(option)}>
+                            <li
+                                key={index}
+                                onClick={() => handleCorrectAnswer(option)}
+                                className={clickedOption === option ? "clicked" : ""}
+                            >
                                 {option}
                             </li>
                         ))}
@@ -64,11 +68,8 @@ export default function Quiz() {
                         </div>
                         <div className="handelnext" onClick={handleNextQuestion}>
                             <FontAwesomeIcon icon={faCircleRight} />
-
                         </div>
-
                     </div>
-
                 </>
             )}
         </div>
